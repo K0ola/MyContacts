@@ -10,9 +10,9 @@ app.use(express.json());
 app.use('/auth', Auth);
 // app.use('/contact', Contact)
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 (async () => {
   await connectDB(process.env.MONGODB_URI);
-  app.listen(PORT, () => console.log(`Server started on ${PORT} 👍`));
+  app.listen(PORT, () => console.log(`Server started 👍`));
 })();
