@@ -7,6 +7,10 @@ const mongoose = require('mongoose');
 
 const Auth = require('./Routes/Auth');
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 app.use(express.json());
 app.use('/auth', Auth);
 
