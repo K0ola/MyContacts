@@ -1,40 +1,61 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const mongoDB = 'mongodb://127.0.0.1/mycontacts';
+const jwt = require('jsonwebtoken');
 
-// const User = require('../Models/User');
+const User = require('../Models/User');
+
+
+function Token(userId) {
+    return jwt.sign({ sub: userId }, process.env.JWT_SECRET);
+  }
 
 router.post('/register', async (req, res) => {
+    console.log(req.body);
     // return res.status(200).json({'ca fonctionne' });
-    const {email, password } = req.body;
-    return res.status(200).json({ email, password });
-    // try {
-    //     const newUser = new User({ email, password });
-    //     await newUser.save();
-    //     res.status(201).json({ message: 'User Created 👍' });
-    // } catch (error) {
-    //     res.status(400).json({ error: 'Error' });
-    // }
-});
+    // const {email, password } = req.body;
+    // return res.status(200).json({ email, password });
 
-
-
-
-
-router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
     try {
-        const user = await User
-            .findOne({ email, password })
-            //////////////////////////////
-            if (!user) {
-            return res.status(401).json({ error: 'Login or Password is not good chef' });
-        }
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(400).json({ error: 'Error' });
+      const { email, password } = req.body || {};
+      if (!email || !password) {
+        return res.status(400).json({ error: 'email and password are required' });
+      }
+      const user = await User.create({ email, password });
+      const token = Token(user._id);
+      res.status(201).json({ id: user._id, email: user.email, token });
+    } catch (err) {
+    //   return res.status(400).json({ error: 'Error creating user' });
+    console.log(err);
+      
     }
-});
+  });
+
+
+
+  router.post('/login', async (req, res) => {
+    
+    try {
+    
+      const { email, password } = req.body || {};
+
+      if (!email || !password) {
+        return res.status(400).json({ error: 'email and password are required' });
+      }
+
+
+      const user = await User.findOne({ email });
+
+      if (!user || !(await user.comparePassword(password))) {
+        return res.status(401).json({ error: 'Invalid credentials' });
+      }
+
+      const token = Token(user._id);
+
+      res.status(200).json({ message: 'Login successful', id: user._id, email: user.email, token });
+
+    } catch (err) {
+      res.status(400).json({ error: 'Login failed' });
+    } 
+  });
 
 module.exports = router;
