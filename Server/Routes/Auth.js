@@ -59,3 +59,14 @@ router.post('/register', async (req, res) => {
   });
 
 module.exports = router;
+
+
+
+
+
+
+
+// A faire
+// 
+// Completer les erreurs pour la logique de Register
+// Relire pour un nettoyage (trouver de potentielles parties a optimiser/supprimer)
