@@ -3,6 +3,7 @@
 
 .app{
     font-family: var(--main-font);
+    background-color: rgba(240, 255, 255, 0.204);
     border: solid rgb(255, 255, 255) 1px;
     border-radius: 15px;
     position: absolute;
@@ -15,16 +16,9 @@
     overflow-y: hidden;
 
 
-    .header{
-        width: 100%;
-        height: 60px;
-        background-color: rgb(31, 31, 31);
-    }
-
-
     .container{
         height: 100%;
-        height: 92%;
+        height: 86%;
         // border: solid red 1px;
         padding: 10px;
 
@@ -41,10 +35,11 @@
 
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 5px;
 
 
             .contact{
+                transition: all 0.3s ease-in-out;
                 height: 80px;
                 width: 100%;
                 background-color: rgba(0, 145, 22, 0.27);
@@ -54,39 +49,71 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap: 10px;
+                justify-content: space-between;
                 // justify-content: center;
 
-                .contactIllu{
-                    border: solid red 1px;
-                    border-radius: 10px;
-                    width: 70px;
-                    height: 70px;
-                    margin-left: 2px;
-                    background-color: brown;
-                }
-
-                .contactInfos{
-                    height: 100%;
+                .contactDetails{
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    .name{
-                        font-size: 1.1em;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                    margin-left: 10px;
+
+                    // border: solid yellow 1px;
+
+                    .contactIllu{
+                        transition: all 0.3s ease-in-out;
+                        width: 60px;
+                        height: 60px;
+                        background-color: white;
+                        border-radius: 50%;
                     }
 
-                    .phoneNumber{
-                        font-size: 0.8em;
-                        color: grey;
+                    .contactInfos{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        // border: solid purple 1px;
+
+                        .name{
+                            font-size: 1.1em;
+                        }
+
+                        .phoneNumber{
+                            font-size: 0.9em;
+                            color: lightgray;
+                        }
                     }
                 }
 
                 .EditBTN{
-                    position: fixed;
-                    top: 3px;
-                    right: 3px;
+                    background-color: rgba(0, 0, 0, 0);
+                    color: white;
+                    border: none;
+                    margin-right: 5px;
+
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    :hover{
+                        color: violet;
+                        cursor: pointer;
+                    }
                 }
             }
+            .contact:hover{
+                    background-color: rgba(0, 255, 38, 0.4);
+                    cursor: pointer;
+
+
+                    .contactDetails > .contactIllu{
+                        transition: all 0.3s ease-in-out;
+                        background-color: lightgray;
+                        border-radius: 10px;
+                    }
+                }
         }
 
     }
