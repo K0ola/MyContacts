@@ -9,14 +9,12 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
     const [token, setToken] = useState(null);
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const t = readToken();
         setToken(t);
         const raw = localStorage.getItem("user");
         setUser(raw ? JSON.parse(raw) : null);
-        setLoading(false);
     }, []);
 
     const login = async ({ email, password }) => {
@@ -27,10 +25,8 @@ export function AuthProvider({ children }) {
             const u = { id: data.id, email: data.email };
             setUser(u);
             localStorage.setItem("user", JSON.stringify(u));
-            setLoading(false);
             return u;
         } catch (err) {
-            setLoading(false);
             throw err;
         }
     };
@@ -43,10 +39,8 @@ export function AuthProvider({ children }) {
             const u = { id: data.id, email: data.email };
             setUser(u);
             localStorage.setItem("user", JSON.stringify(u));
-            setLoading(false);
             return u;
         } catch (err) {
-            setLoading(false);
             throw err;
         }
     };
@@ -66,12 +60,11 @@ export function AuthProvider({ children }) {
             token,
             user,
             isAuthenticated: Boolean(token),
-            loading,
             login,
             register,
             logout,
         }),
-        [token, user, loading]
+        [token, user]
     );
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
