@@ -6,8 +6,8 @@ module.exports = function requireAuth(req, res, next) {
   if (!token) return res.status(401).json({ message: 'Token manquant' });
 
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = { id: payload.sub };
+    const data = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = { id: data.sub };
     next();
   } catch {
     return res.status(401).json({ message: 'Token invalide' });

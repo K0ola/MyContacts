@@ -6,7 +6,7 @@ exports.createContact = async (req, res) => {
     const userId = req.user.id;
     let { firstName, lastName, phone } = req.body;
     if (!firstName || !lastName || !phone) {
-      return res.status(400).json({ message: 'firstName, lastName et phone sont requis' });
+      return res.status(400).json({ message: 'prénom, nom et téléphone sont requis' });
     }
 
     phone = String(phone).replace(/\s+/g, '');
