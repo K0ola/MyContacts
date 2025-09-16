@@ -6,7 +6,7 @@ const connectDB = require('./utils/db');
 
 const Auth = require('./Routes/auth.routes');
 const Contacts = require('./Routes/contact.routes');
-const { initSwagger } = require('./utils/swagger');
+// const { initSwagger } = require('./utils/swagger');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use('/api/auth', Auth);
 app.use('/api/contacts', Contacts);
 
 // Swagger
-initSwagger(app);
+// initSwagger(app);
 
 const PORT = process.env.PORT || 3000;
 
