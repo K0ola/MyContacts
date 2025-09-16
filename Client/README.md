@@ -1,1 +1,0 @@
-routes -> model -> controller -> service

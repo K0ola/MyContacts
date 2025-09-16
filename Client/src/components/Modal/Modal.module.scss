@@ -1,0 +1,32 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: #fff;
+  width: min(520px, 92vw);
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.2);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.closeBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.body { padding: 18px; }

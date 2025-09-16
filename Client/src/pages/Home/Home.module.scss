@@ -1,6 +1,9 @@
 @import "../../utils/styles/variables.scss";
 
 
+
+
+
 .app{
     font-family: var(--main-font);
     background-color: rgba(240, 255, 255, 0.204);
@@ -86,7 +89,7 @@
                     }
                 }
 
-                .EditBTN{
+                .EditBTN, .DeleteBTN{
                     background-color: rgba(0, 0, 0, 0);
                     color: white;
                     border: none;
