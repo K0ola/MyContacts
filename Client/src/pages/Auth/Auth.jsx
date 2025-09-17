@@ -27,8 +27,6 @@ function Auth() {
     } catch (error) {
       const msg = error?.response?.data?.error || "Erreur";
       setErr(msg);
-    } finally {
-      setLoading(false);
     }
   };
 

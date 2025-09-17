@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Modal from "../Modal/Modal";
-import styles from "./EditContact.module.scss";
+import s from "./EditContact.module.scss";
 
 const EditContact = ({ isOpen, onClose, onSubmit, contact }) => {
   const [form, setForm] = useState({ name: "", phone: "" });
@@ -59,7 +59,7 @@ const EditContact = ({ isOpen, onClose, onSubmit, contact }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Modifier le contact">
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={s.form} onSubmit={handleSubmit}>
         <label>
           Nom* (Prénom + Nom)
           <input
@@ -81,9 +81,9 @@ const EditContact = ({ isOpen, onClose, onSubmit, contact }) => {
           />
         </label>
 
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <p className={s.error}>{error}</p>}
 
-        <div className={styles.actions}>
+        <div className={s.actions}>
           <button type="button" onClick={onClose}>Annuler</button>
           <button type="submit">Enregistrer</button>
         </div>

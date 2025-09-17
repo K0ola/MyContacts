@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import styles from "./Modal.module.scss";
+import s from "./Modal.module.scss";
 
 const Modal = ({ isOpen, title, children, onClose }) => {
   useEffect(() => {
@@ -13,19 +13,19 @@ const Modal = ({ isOpen, title, children, onClose }) => {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
-    <div className={styles.overlay} onMouseDown={onClose} aria-hidden>
+    <div className={s.overlay} onMouseDown={onClose} aria-hidden>
       <div
-        className={styles.dialog}
+        className={s.dialog}
         role="dialog"
         aria-modal="true"
         aria-label={title}
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <div className={styles.header}>
+        <div className={s.header}>
           <h3>{title}</h3>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Fermer">×</button>
+          <button className={s.closeBtn} onClick={onClose} aria-label="Fermer">×</button>
         </div>
-        <div className={styles.body}>{children}</div>
+        <div className={s.body}>{children}</div>
       </div>
     </div>,
     document.body

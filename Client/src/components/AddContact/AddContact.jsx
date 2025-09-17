@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "../Modal/Modal";
-import styles from "./AddContact.module.scss";
+import s from "./AddContact.module.scss";
 
 const initial = { name: "", phone: "" };
 
@@ -47,7 +47,7 @@ const AddContact = ({ isOpen, onClose, onSubmit }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Ajouter un contact">
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={s.form} onSubmit={handleSubmit}>
         <label>
           Nom* (Prénom + Nom)
           <input
@@ -70,9 +70,9 @@ const AddContact = ({ isOpen, onClose, onSubmit }) => {
           />
         </label>
 
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <p className={s.error}>{error}</p>}
 
-        <div className={styles.actions}>
+        <div className={s.actions}>
           <button type="button" onClick={onClose}>Annuler</button>
           <button type="submit">Ajouter</button>
         </div>
