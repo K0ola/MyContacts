@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://127.0.0.1:3000",
+  baseURL: "https://mycontacts.arthur-zachary.me",
 });
 
 export function getToken() {
