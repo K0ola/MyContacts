@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://mycontacts.arthur-zachary.me:3000",
+  baseURL: "https://mycontacts.arthur-zachary.me",
 });
 
 export function getToken() {
