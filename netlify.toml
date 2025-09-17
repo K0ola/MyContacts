@@ -1,18 +1,17 @@
 [build]
-  base    = "Client"
-  command = "npm ci && npm run build"
-  publish = "dist"
+  command   = "npm --prefix Client ci && npm --prefix Client run build"
+  publish   = "Client/dist"
   functions = "netlify/functions"
 
-# Routes SPA
-[[redirects]]
-  from = "/*"
-  to   = "/index.html"
-  status = 200
-
-# API proxy (évite CORS)
+# Proxy API → Function
 [[redirects]]
   from = "/api/*"
   to   = "/.netlify/functions/api/:splat"
   status = 200
   force = true
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
