@@ -34,14 +34,14 @@ api.interceptors.response.use(
 export default api;
 
 export const AuthAPI = {
-  register: (data) => api.post("/api/auth/register", data),
-  login: (data) => api.post("/api/auth/login", data),
+  register: (data) => api.post("/auth/register", data),
+  login: (data) => api.post("/auth/login", data),
 };
 
 export const ContactsAPI = {
-  list: (params) => api.get("/api/contacts", { params }),
-  create: (data) => api.post("/api/contacts", data),
-  get: (id) => api.get(`/api/contacts/${id}`),
-  update: (id, data) => api.put(`/api/contacts/${id}`, data),
-  remove: (id) => api.delete(`/api/contacts/${id}`),
+  list: (params) => api.get("/contacts", { params }),
+  create: (data) => api.post("/contacts", data),
+  get: (id) => api.get(`/contacts/${id}`),
+  update: (id, data) => api.put(`/contacts/${id}`, data),
+  remove: (id) => api.delete(`/contacts/${id}`),
 };
