@@ -3,14 +3,12 @@
   publish   = "Client/dist"
   functions = "netlify/functions"
 
-# Proxy API → Function
 [[redirects]]
   from = "/api/*"
   to   = "/.netlify/functions/api/:splat"
   status = 200
   force = true
 
-# SPA fallback
 [[redirects]]
   from = "/*"
   to   = "/index.html"
