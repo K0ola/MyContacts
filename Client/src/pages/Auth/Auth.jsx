@@ -63,7 +63,7 @@ function Auth() {
                 id="email"
                 type="email"
                 required
-                placeholder="johndoe.eheh@exempledefou.ez"
+                placeholder="johndoe@exemple.fr"
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -80,7 +80,7 @@ function Auth() {
                 type={showPw ? "text" : "password"}
                 required
                 minLength={6}
-                placeholder="••••••••"
+                placeholder="***********"
                 autoComplete={mode === "login" ? "current-password" : "new-password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
